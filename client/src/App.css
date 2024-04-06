@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #D5ABAE;
+  min-height: 100vh;         /*allow full coverage */
+  width: 100%;
 }
 
 .App-logo {
@@ -13,19 +16,15 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  text-align: center;
+  min-height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
