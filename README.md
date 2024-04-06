@@ -1,2 +1,2 @@
-# acorn-mood-tracker
+# LunaCycles
 youCode @ UBC 
