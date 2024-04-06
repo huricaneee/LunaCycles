@@ -1,13 +1,13 @@
 import "./LandingPage.css";
-import "./DayButton.js"
-import DayButton from "./DayButton.js";
+import "./Calendar.js"
+import Calendar from "./Calendar.js";
 
 function LandingPage() {
     const Month = "March";
     const day = 20;
     return (
         <div className="mainContainer">
-            <DayButton></DayButton>
+            <Calendar></Calendar>
         </div>
     );
 }
