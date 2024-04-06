@@ -2,12 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import "./LandingPage.js";
 import LandingPage from './LandingPage.js';
+import logoImg from "./lunacycle_logo.png"
 
 function App() {
   return (
     <div className="App">
       <header className="header">
-        <h2>LunaCycles</h2>
+        <img src={logoImg} className="logo"></img>
       </header>
       <LandingPage></LandingPage>
     </div>
