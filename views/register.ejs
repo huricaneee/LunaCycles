@@ -16,40 +16,76 @@
     <!-- Section: Design Block -->
     <section class="background-radial-gradient overflow-hidden">
         <style>
+/*             .background-radial-gradient { */
+/*                 background-color: hsl(169, 51%, 15%); */
+/*                 background-image: radial-gradient(650px circle at 0% 0%, */
+/*                 hsl(169, 51%, 35%) 15%, */
+/*                 hsl(169, 51%, 30%) 35%, */
+/*                 hsl(169, 51%, 20%) 75%, */
+/*                 hsl(169, 51%, 19%) 80%, */
+/*                 transparent 100%), */
+/*                 radial-gradient(1250px circle at 100% 100%, */
+/*                         hsl(169, 51%, 35%) 15%, */
+/*                         hsl(169, 51%, 30%) 35%, */
+/*                         hsl(169, 51%, 20%) 75%, */
+/*                         hsl(169, 51%, 19%) 80%, */
+/*                         transparent 100%); */
+/*             } */
+
             .background-radial-gradient {
-                background-color: hsl(169, 51%, 15%);
-                background-image: radial-gradient(650px circle at 0% 0%,
-                hsl(169, 51%, 35%) 15%,
-                hsl(169, 51%, 30%) 35%,
-                hsl(169, 51%, 20%) 75%,
-                hsl(169, 51%, 19%) 80%,
-                transparent 100%),
-                radial-gradient(1250px circle at 100% 100%,
-                        hsl(169, 51%, 35%) 15%,
-                        hsl(169, 51%, 30%) 35%,
-                        hsl(169, 51%, 20%) 75%,
-                        hsl(169, 51%, 19%) 80%,
-                        transparent 100%);
-            }
+                                background-color: hsl(340, 80%, 90%); /* Light pink base color */
+                                background-image:
+                                    radial-gradient(650px circle at 0% 0%,
+                                        hsl(340, 51%, 60%) 15%, /* Slightly darker pink */
+                                        hsl(340, 51%, 70%) 35%, /* A touch more saturation decrease */
+                                        hsl(340, 51%, 80%) 75%, /* Even darker */
+                                        hsl(340, 51%, 90%) 80%, /* Darker and less saturated */
+                                        transparent 100%),
+                                    radial-gradient(1250px circle at 100% 100%,
+                                        hsl(340, 51%, 78%) 15%, /* Slightly darker pink */
+                                        hsl(340, 51%, 76%) 35%, /* A touch more saturation decrease */
+                                        hsl(340, 51%, 74%) 75%, /* Even darker */
+                                        hsl(340, 51%, 72%) 80%, /* Darker and less saturated */
+                                        transparent 100%);
+                            }
+
+/*             #radius-shape-1 { */
+/*                 height: 220px; */
+/*                 width: 220px; */
+/*                 top: -60px; */
+/*                 left: -130px; */
+/*                 background: radial-gradient(#164949, #95CB75); */
+/*                 overflow: hidden; */
+/*             } */
+
+/*             #radius-shape-2 { */
+/*                 border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%; */
+/*                 bottom: -60px; */
+/*                 right: -110px; */
+/*                 width: 300px; */
+/*                 height: 300px; */
+/*                 background: radial-gradient(#164949, #95CB75); */
+/*                 overflow: hidden; */
+/*             } */
 
             #radius-shape-1 {
-                height: 220px;
-                width: 220px;
-                top: -60px;
-                left: -130px;
-                background: radial-gradient(#164949, #95CB75);
-                overflow: hidden;
-            }
+                            height: 110px;
+                            width: 100px;
+                            top: -30px;
+                            left: -10px;
+                            background: radial-gradient(#ffffff, hsl(340, 59%, 80%));
+                            overflow: hidden;
+                        }
 
-            #radius-shape-2 {
-                border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-                bottom: -60px;
-                right: -110px;
-                width: 300px;
-                height: 300px;
-                background: radial-gradient(#164949, #95CB75);
-                overflow: hidden;
-            }
+                        #radius-shape-2 {
+                            border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+                            bottom: -60px;
+                            right: -110px;
+                            width: 300px;
+                            height: 300px;
+                            background: radial-gradient( #ffffff, #f8bbd0);
+                            overflow: hidden;
+                        }
 
             .bg-glass {
                 background-color: hsla(0, 0%, 100%, 0.9) !important;
@@ -57,12 +93,17 @@
             }
         </style>
 
+        <div id="LogoContainer" style="width: 100%; text-align: center;">
+                    <img src="/Lunalogo.png" alt="LunaCyclesLogo" style="max-width: 15%;
+                    height: auto; position: absolute; top: 30px; left: 100px;">
+                </div>
+
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
             <div class="row gx-lg-5 align-items-center mb-5">
                 <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
                     <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
                         Welcome to <br/>
-                        <span style="color: hsl(98, 85%, 75%)">Luna Cycles</span>
+                        &nbsp;&nbsp;<span style="color:hsl(340, 90%, 35%); font-size: larger;">Luna Cycles</span>
                     </h1>
                 </div>
 
