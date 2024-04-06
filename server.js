@@ -12,9 +12,10 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const User = require("./models/User");
 const mongoose = require("mongoose");
+const cors = require("cors")
 
 initializePassport(passport, async (email) => {
-    return User.findOne({ email });
+    return User.findOne({ email: email });
 });
 
 mongoose
@@ -25,6 +26,7 @@ mongoose
     .then(() => console.log("MongoDB connection established successfully"))
     .catch((error) => console.error("Failed to connect MongoDB:", error.message));
 
+app.use(cors({origin: "http://localhost:3000"})); // Configuring CORS
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(
@@ -32,16 +34,15 @@ app.use(
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
-    }),
+    })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
 
-app.get("/", checkAuthenticated, async (req, res) => {
-    // const trees = await Tree.find(); // Fetch all trees from the database
-    // res.render("index.ejs", { name: req.user.name, trees: trees });
+app.get('/', checkAuthenticated, function(req, res) {
+    res.redirect('http://localhost:3000');
 });
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
@@ -59,7 +60,7 @@ app.post(
         successRedirect: "/",
         failureRedirect: "/login",
         failureFlash: true,
-    }),
+    })
 );
 
 app.post("/register", checkNotAuthenticated, async (req, res) => {
@@ -78,16 +79,15 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
 });
 
 app.delete("/logout", (req, res) => {
-    req.logout(req.user, (err) => {
-        if (err) return console.error(err);
-        res.redirect("/");
-    });
+    req.logOut();
+    res.redirect("/");
 });
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
+
     res.redirect("/login");
 }
 
