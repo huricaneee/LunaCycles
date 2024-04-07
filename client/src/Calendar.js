@@ -5,9 +5,11 @@ import {LocalizationProvider} from '@mui/x-date-pickers';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {DateCalendar} from '@mui/x-date-pickers/DateCalendar';
 import {UserContext} from './App.js';
+import {PeriodContext} from './PeriodContext';
 
 export default function Calendar() {
     const {user, isLoading} = useContext(UserContext); // Get the user and isLoading from context
+    const {setPeriods} = useContext(PeriodContext);
     const [dates, setDates] = useState({startDate: null, endDate: null, nextDate: "start"});
     const [message, setMessage] = useState(null); // Message state
 
@@ -25,7 +27,7 @@ export default function Calendar() {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    user: user,
+                    user: user._id,
                     startDate: newDates.startDate?.toISOString(),
                     endDate: newDates.endDate?.toISOString()
                 }),
@@ -33,9 +35,9 @@ export default function Calendar() {
 
             const response = await fetch('http://localhost:5010/period', period);
             const data = await response.json();
-
-            console.log(data);
+            
             setMessage('Period is recorded.');
+            setPeriods(prevPeriods => [...prevPeriods, data]);
         }
     };
 

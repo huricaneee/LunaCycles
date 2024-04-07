@@ -96,6 +96,14 @@ app.post('/period', (req, res) => {
         .catch((err) => res.status(500).json({message: `Error storing period data: ${err.message}`}));
 });
 
+app.get('/period/:id', (req, res) => {
+    const userId = req.params.id;
+
+    Period.find({user: userId})
+        .then(periods => res.status(200).json(periods))
+        .catch(err => res.status(500).json({message: `Error retrieving period data: ${err.message}`}));
+});
+
 app.get("/logout", (req, res) => {
     req.session.destroy(err => {
         if (err) {
