@@ -83,8 +83,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
 app.post('/period', (req, res) => {
     const {user, startDate, endDate} = req.body;
 
-    console.log('startDate :', startDate, 'endDate:', endDate);
-
     const period = new Period({
         user,
         startDate,
@@ -92,8 +90,8 @@ app.post('/period', (req, res) => {
     });
 
     period.save()
-        .then(() => res.status(200).json({message: 'Period data received and stored.'}))
-        .catch((err) => res.status(500).json({message: `Error storing period data: ${err.message}`}));
+        .then(savedPeriod => res.status(200).json(savedPeriod))  // Return the saved period to the client
+        .catch(err => res.status(500).json({message: `Error storing period data: ${err.message}`}));
 });
 
 app.get('/period/:id', (req, res) => {

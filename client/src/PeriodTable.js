@@ -1,27 +1,29 @@
 import * as React from 'react';
 import {useContext} from 'react';
-import Table from '@mui/material/Table';
+import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@mui/material';
 import {PeriodContext} from './PeriodContext';
 
 export default function PeriodTable() {
     const {periods} = useContext(PeriodContext);
 
     return (
-        <Table aria-label="basic table">
-            <thead style={{backgroundColor: '#ead5d6'}}>
-            <tr>
-                <th>Start Date</th>
-                <th>End Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            {periods.map((period, index) => (
-                <tr key={index}>
-                    <td>{new Date(period.startDate).toLocaleDateString()}</td>
-                    <td>{new Date(period.endDate).toLocaleDateString()}</td>
-                </tr>
-            ))}
-            </tbody>
-        </Table>
+        <TableContainer component={Paper} style={{maxHeight: 350, overflow: 'auto'}}>
+            <Table aria-label="basic table" stickyHeader>
+                <TableHead style={{backgroundColor: '#ead5d6'}}>
+                    <TableRow>
+                        <TableCell>Start Date</TableCell>
+                        <TableCell>End Date</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {periods.map((period, index) => (
+                        <TableRow key={index}>
+                            <TableCell>{new Date(period.startDate).toLocaleDateString()}</TableCell>
+                            <TableCell>{new Date(period.endDate).toLocaleDateString()}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
     );
 }

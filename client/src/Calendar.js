@@ -8,10 +8,10 @@ import {UserContext} from './App.js';
 import {PeriodContext} from './PeriodContext';
 
 export default function Calendar() {
-    const {user, isLoading} = useContext(UserContext); // Get the user and isLoading from context
+    const {user, isLoading} = useContext(UserContext);
     const {setPeriods} = useContext(PeriodContext);
     const [dates, setDates] = useState({startDate: null, endDate: null, nextDate: "start"});
-    const [message, setMessage] = useState(null); // Message state
+    const [message, setMessage] = useState(null);
 
     const handleDateChange = async (date) => {
         if (dates.nextDate === "start") {
@@ -20,7 +20,6 @@ export default function Calendar() {
         } else {
             const newDates = {...dates, endDate: date, nextDate: "start"};
             setDates(newDates);
-
             setMessage(null);
 
             const period = {
@@ -28,20 +27,19 @@ export default function Calendar() {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     user: user._id,
-                    startDate: newDates.startDate?.toISOString(),
-                    endDate: newDates.endDate?.toISOString()
+                    startDate: newDates.startDate,
+                    endDate: newDates.endDate
                 }),
             };
 
             const response = await fetch('http://localhost:5010/period', period);
             const data = await response.json();
-            
+
             setMessage('Period is recorded.');
             setPeriods(prevPeriods => [...prevPeriods, data]);
         }
     };
 
-    // If the user data is still loading, show a loading message
     if (isLoading) {
         return <div>Loading...</div>;
     }

@@ -6,7 +6,7 @@ import PeriodTable from "./PeriodTable.js";
 function LandingPage() {
     return (
         <div className="contentContainer"> {/* Flex container */}
-            <div className="mainContainer">
+            <div className="calendarContainer">
                 <Calendar/>
             </div>
             <div className="tableContainer">
