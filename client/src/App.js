@@ -2,6 +2,8 @@ import React, {createContext, useEffect, useState} from 'react';
 import logoImg from "./LunaCyclesLogo.png"
 import './App.css';
 import LandingPage from "./LandingPage";
+import {PeriodProvider} from './PeriodContext';
+
 
 // Create a user context
 export const UserContext = createContext(null);
@@ -49,7 +51,9 @@ function App() {
                     {user &&
                         <button onClick={handleLogout}>Logout</button>} {/* Logout button */}
                 </header>
-                <LandingPage/>
+                <PeriodProvider>
+                    <LandingPage/>
+                </PeriodProvider>
             </div>
         </UserContext.Provider>
     );

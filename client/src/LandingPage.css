@@ -10,7 +10,7 @@
 .mainContainer {
     /* Fixed width styles (if necessary) */
     width: 300px;
-    height: 300px;
+    height: 350px;
     margin: 10px auto auto;
     border: 2px solid white;
     background-color: #ead5d6;

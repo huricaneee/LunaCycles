@@ -1,7 +1,11 @@
 import * as React from 'react';
+import {useContext} from 'react';
 import Table from '@mui/material/Table';
+import {PeriodContext} from './PeriodContext';
 
 export default function PeriodTable() {
+    const {periods} = useContext(PeriodContext);
+
     return (
         <Table aria-label="basic table">
             <thead style={{backgroundColor: '#ead5d6'}}>
@@ -11,10 +15,12 @@ export default function PeriodTable() {
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>2023-04-01</td>
-                <td>2023-04-15</td>
-            </tr>
+            {periods.map((period, index) => (
+                <tr key={index}>
+                    <td>{new Date(period.startDate).toLocaleDateString()}</td>
+                    <td>{new Date(period.endDate).toLocaleDateString()}</td>
+                </tr>
+            ))}
             </tbody>
         </Table>
     );
