@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 import logoImg from "./LunaCyclesLogo.png"
 import './App.css';
 import LandingPage from "./LandingPage";
@@ -9,6 +9,7 @@ export const UserContext = createContext(null);
 function App() {
 
     const [user, setUser] = useState(null);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:5010', {
@@ -19,9 +20,10 @@ function App() {
         })
             .then(response => response.json())
             .then(data => {
-                if(data.user) {
+                if (data.user) {
                     setUser(data.user);
                 }
+                setLoading(false);
             });
     }, []);
 
@@ -39,7 +41,7 @@ function App() {
 
     // Render the UserContext.Provider and pass the user state in the value prop
     return (
-        <UserContext.Provider value={user}>
+        <UserContext.Provider value={{user, isLoading}}>
             <div className="App">
                 <header className="header">
                     <img src={logoImg} className="logo" alt={"logoImg"}></img>

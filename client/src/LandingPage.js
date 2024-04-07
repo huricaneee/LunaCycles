@@ -1,7 +1,6 @@
 import "./LandingPage.css";
-import "./Calendar.js"
-import Calendar from "./Calendar.js";
 import React from "react";
+import Calendar from "./Calendar.js";
 
 function LandingPage() {
     return (

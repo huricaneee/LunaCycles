@@ -11,11 +11,12 @@ const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const User = require("./models/User");
+const Period = require('./models/Period');
 const mongoose = require("mongoose");
 const cors = require("cors")
 
 initializePassport(passport, async (email) => {
-    return User.findOne({ email: email });
+    return User.findOne({email: email});
 });
 
 mongoose
@@ -27,7 +28,8 @@ mongoose
     .catch((error) => console.error("Failed to connect MongoDB:", error.message));
 
 app.use(cors({origin: "http://localhost:3000", credentials: true}));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 app.use(flash());
 app.use(
     session({
@@ -41,8 +43,8 @@ app.use(passport.session());
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
 
-app.get('/', checkAuthenticated, function(req, res) {
-    res.json({ user: req.user });
+app.get('/', checkAuthenticated, function (req, res) {
+    res.json({user: req.user});
 });
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
@@ -76,6 +78,22 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
     } catch {
         res.redirect("/register");
     }
+});
+
+app.post('/period', (req, res) => {
+    const {user, startDate, endDate} = req.body;
+
+    console.log('startDate :', startDate, 'endDate:', endDate);
+
+    const period = new Period({
+        user,
+        startDate,
+        endDate,
+    });
+
+    period.save()
+        .then(() => res.status(200).json({message: 'Period data received and stored.'}))
+        .catch((err) => res.status(500).json({message: `Error storing period data: ${err.message}`}));
 });
 
 app.get("/logout", (req, res) => {
