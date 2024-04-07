@@ -1,10 +1,42 @@
+.contentContainer {
+    display: flex;
+    justify-content: space-around; /* Distributes space around the items */
+    align-items: center; /* Aligns items vertically */
+}
+
+
+/* If you want the Calendar and Table to have fixed widths,
+   ensure their combined widths plus any margin/padding do not exceed 100%. */
 .mainContainer {
-    width: 600px;
-    height: 350px;
-    margin: 40px auto auto;
+    /* Fixed width styles (if necessary) */
+    width: 300px;
+    height: 300px;
+    margin: 10px auto auto;
     border: 2px solid white;
     background-color: #ead5d6;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.tableContainer {
+    width: 300px;
+    height: 100px;
+    margin: 40px auto auto;
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: #ffffff; /* Typically tables have a white or light background */
+}
+
+.mainContainer,
+.tableContainer {
+    width: 400px; /* Match the width of the calendar */
+    margin: 40px auto; /* Center the container */
+    border: 2px solid white;
+    /*background-color: #ead5d6; !* Keep the color consistent or change as desired *!*/
+    border-radius: 15px;
+    padding: 20px; /* Adjust padding as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds some depth */
     display: flex;
     justify-content: center;
 }
