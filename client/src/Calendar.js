@@ -33,11 +33,13 @@ export default function Calendar() {
                 }),
             };
 
-            const response = await fetch('http://localhost:5010/period', period);
-            const data = await response.json();
+            await fetch('http://localhost:5010/period', period);
+            //const data = await response.json();
             
             setMessage('Period is recorded.');
-            setPeriods(prevPeriods => [...prevPeriods, data]);
+            setPeriods(prevPeriods => [...prevPeriods, {startDate: newDates.startDate.toISOString(),
+                                                        endDate: newDates.endDate.toISOString()}]);
+
         }
     };
 
