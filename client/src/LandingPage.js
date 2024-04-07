@@ -2,6 +2,7 @@ import "./LandingPage.css";
 import React from "react";
 import Calendar from "./Calendar.js";
 import PeriodTable from "./PeriodTable.js";
+import SportsTips from "./SportsTips";
 
 function LandingPage() {
     return (
@@ -11,6 +12,9 @@ function LandingPage() {
             </div>
             <div className="tableContainer">
                 <PeriodTable/>
+            </div>
+            <div className="sportsTipsContainer">
+                <SportsTips/>
             </div>
         </div>
     );
