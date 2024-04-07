@@ -1,33 +1,48 @@
 .contentContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around; /* Ensures equal spacing around items */
     align-items: stretch;
-    margin-top: 100px;
+    margin-top: 50px;
+    padding: 50px 0; /* Adds space top and bottom */
 }
 
-.calendarContainer,
-.tableContainer {
-    flex-grow: 1;
-    max-width: 500px;
+.calendarContainer, .sportsTipsContainer {
+    width: 28%;
     height: 350px;
-    margin: 10px;
+    margin: 10px 5px;
     border: 2px solid white;
     border-radius: 15px;
-    overflow-y: auto;
 
-    /* Added these properties */
+    /* Remove overflow-y: auto; from here */
+
+    /* Keep these properties */
     display: flex;
-    flex-direction: column; /* Aligns the content in a column */
-    justify-content: center; /* Centers content vertically */
-    align-items: center; /* Centers content horizontally */
+    flex-direction: column;
+    justify-content: flex-start; /* Aligned content to start */
+    align-items: center;
+}
+
+.tableContainer {
+    width: 28%;
+    height: 350px;
+    margin: 10px 5px;
+    border: 2px solid white;
+    border-radius: 15px;
+    overflow-y: auto; /* Overlow stays here */
+
+    /* Keep these properties */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .calendarContainer {
     background-color: #ead5d6;
 }
 
-.tableContainer {
+.tableContainer,
+.sportsTipsContainer {
     background-color: #ffffff;
 }
 
