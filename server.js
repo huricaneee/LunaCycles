@@ -26,7 +26,7 @@ mongoose
     .then(() => console.log("MongoDB connection established successfully"))
     .catch((error) => console.error("Failed to connect MongoDB:", error.message));
 
-app.use(cors({origin: "http://localhost:3000"})); // Configuring CORS
+app.use(cors({origin: "http://localhost:3000", credentials: true}));
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(
@@ -42,7 +42,7 @@ app.use(methodOverride("_method"));
 app.use(express.static("public"));
 
 app.get('/', checkAuthenticated, function(req, res) {
-    res.redirect('http://localhost:3000');
+    res.json({ user: req.user });
 });
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
@@ -57,7 +57,7 @@ app.post(
     "/login",
     checkNotAuthenticated,
     passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "http://localhost:3000", // URL of the React application
         failureRedirect: "/login",
         failureFlash: true,
     })
@@ -78,9 +78,13 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
     }
 });
 
-app.delete("/logout", (req, res) => {
-    req.logOut();
-    res.redirect("/");
+app.get("/logout", (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            // handle error case
+        }
+        res.redirect("/login");
+    });
 });
 
 function checkAuthenticated(req, res, next) {

@@ -1,0 +1,10 @@
+.mainContainer {
+    width: 600px;
+    height: 400px;
+    margin: 40px auto auto;
+    border: 2px solid white;
+    background-color: #ead5d6;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
