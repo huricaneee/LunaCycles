@@ -45,9 +45,11 @@ function App() {
             <div className="App">
                 <header className="header">
                     <img src={logoImg} className="logo" alt={"logoImg"}></img>
+                    <div className='text'>
                     {user ? `Welcome back, ${user.name}` : 'Please log in.'}
+                    </div>
                     {user &&
-                        <button onClick={handleLogout}>Logout</button>} {/* Logout button */}
+                        <button onClick={handleLogout} className='logout'>Logout</button>} {/* Logout button */}
                 </header>
                 <LandingPage/>
             </div>

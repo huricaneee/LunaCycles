@@ -6,8 +6,9 @@
 }
 
 .logo {
-  height: 20vmin;
+  max-height: 15vmin;
   pointer-events: none;
+  margin-top: 10px;
 }
 
 .header {
@@ -18,5 +19,25 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  font-weight: 700;
   color: white;
+}
+
+.logout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  background-color: #D5ABAE;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+.logout:hover {
+  color: #D5ABAE;
+  background-color: white;
 }
