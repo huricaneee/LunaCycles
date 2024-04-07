@@ -26,6 +26,7 @@
     border: 2px solid white;
     border-radius: 15px;
     background-color: #ffffff; /* Typically tables have a white or light background */
+    overflow-y: auto;
 }
 
 .mainContainer,
