@@ -5,10 +5,12 @@ const SportsTips = () => {
     const {periods} = useContext(PeriodContext);
 
     const periodStatusStyle = {
-        marginTop: '50px',
+        marginTop: '15px',
+        marginBottom: '15px',
         color: '#D5ABAE',
         fontWeight: 'bold',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        fontSize: '28px'
     };
 
     const containerStyle = {
@@ -42,9 +44,9 @@ const SportsTips = () => {
     ];
 
     const suggestionsForNonPeriod = [
-        'Running',
-        'Gym',
-        'Swimming',
+        'Alpine & Rock Climbing',
+        'Hiking & Trekking',
+        'Trail Running',
     ];
 
     const suggestions = isUserInPeriod ? suggestionsForPeriod : suggestionsForNonPeriod;
@@ -65,11 +67,14 @@ const SportsTips = () => {
                 <h4 style={periodStatusStyle}>{calculateDaysUntilNextPeriod()} days until next period</h4>}
             <h4>Sports Tips</h4>
             <p>Here are some sport suggestions for you:</p>
-            <ul>
+            <ul style={{listStyle: 'none', padding: 0, margin: 0, textAlign: 'center', marginBottom: '30px'}}>
                 {suggestions.map((sport, index) => (
                     <li key={index}>{sport}</li>
                 ))}
             </ul>
+            <a href="https://arcteryx.com/ca/en/c/womens" target="_blank" rel="noopener noreferrer">
+                <img src="/ArcteryxLogo.jpg" alt="Explore ARC'TERYX" style={{width: '30%', height: 'auto'}}/>
+            </a>
         </div>
     );
 };
