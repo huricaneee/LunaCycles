@@ -3,46 +3,36 @@
     flex-wrap: wrap;
     justify-content: space-around; /* Ensures equal spacing around items */
     align-items: stretch;
-    margin-top: 50px;
+    margin-top: 45px;
     padding: 50px 0; /* Adds space top and bottom */
 }
 
-.calendarContainer, .sportsTipsContainer {
+.calendarContainer, .sportsTipsContainer, .tableContainer {
     width: 28%;
     height: 350px;
-    margin: 10px 5px;
-    border: 2px solid white;
+    margin: 10px 15px; /* Adjusted margins here */
     border-radius: 15px;
-
-    /* Remove overflow-y: auto; from here */
-
-    /* Keep these properties */
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Aligned content to start */
     align-items: center;
+    overflow-y: auto; /* Overflow moved here */
 }
 
-.tableContainer {
-    width: 28%;
-    height: 350px;
-    margin: 10px 5px;
-    border: 2px solid white;
-    border-radius: 15px;
-    overflow-y: auto; /* Overlow stays here */
-
-    /* Keep these properties */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/* Specific properties for different containers */
 
 .calendarContainer {
+    border: 2px solid white;
     background-color: #ead5d6;
 }
 
-.tableContainer,
 .sportsTipsContainer {
+    border: 2px solid #ead5d6;
+    background-color: #ffffff;
+}
+
+.tableContainer {
+    border: 2px solid white;
     background-color: #ffffff;
 }
 
@@ -50,7 +40,6 @@
     font-weight: bold;
 }
 
-.tableContainer table th,
-.tableContainer table td {
+.tableContainer table th, .tableContainer table td {
     text-align: center;
 }
