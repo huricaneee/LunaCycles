@@ -10,19 +10,19 @@ The inspiration behind this project lies in the commendable work initiated by th
 
 ## Features
 
-### Personalization and Prediction
+### 🪄 Personalization and Prediction
 
 Understanding that every woman's cycle is unique, our app learns from user inputs to provide personalized insights. This feature makes our app an invaluable tool for planning and health monitoring.
 
-### Empowerment Through Knowledge
+### 📖 Empowerment Through Knowledge
 
 We believe in empowerment through knowledge. By providing insights into their menstrual cycles, we help users gain a deeper understanding of their own bodies.
 
-### Convenience and Accessibility
+### 👀 Convenience and Accessibility
 
 Harnessing the power of design, we use warm and comforting colors and imagery to create a welcoming atmosphere. This approach aims to reduce anxiety associated with menstrual health management. Moreover, we have simplified the process of logging with intuitive calendar functions for ease of use.
 
-### Community and Support
+### 👯‍♀️ Community and Support
 
 To provide a comprehensive solution, we integrated Arc’teryx into our website. This feature enables users to interact with exercise recommendations and receive suggestions for appropriate outdoor outfits.
 
