@@ -73,7 +73,7 @@ const SportsTips = () => {
                 ))}
             </ul>
             <a href="https://arcteryx.com/ca/en/c/womens" target="_blank" rel="noopener noreferrer">
-                <img src="/ArcteryxLogo.jpg" alt="Explore ARC'TERYX" style={{width: '30%', height: 'auto'}}/>
+                <img src="/ArcteryxLogo.jpg" alt="Explore ARC'TERYX" style={{width: '25%', height: 'auto'}}/>
             </a>
         </div>
     );
