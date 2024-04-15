@@ -1,7 +1,7 @@
 # LunaCycles: A Menstrual Tracking App
 
 
-https://github.com/Miranda-Tang/LunaCycles/assets/81618041/440e118c-5c4a-4797-9296-a207f35bd31c
+https://github.com/Miranda-Tang/LunaCycles/assets/81618041/79746684-2355-4021-bd07-075727bfe441
 
 
 ## Inspiration
