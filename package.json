@@ -24,8 +24,8 @@
     "passport-local": "^1.0.0"
   },
   "scripts": {
-    "start-server": "npm install && npm start",
-    "build-client": "cd client && npm install && npm run build",
-    "start": "npm run build-client && npm run start-server"
+    "start-server": "npm start",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "start": "npm run start-server"
   }
 }
