@@ -23,4 +23,9 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
   }
+  "scripts": {
+    "start-server": "cd server && npm install && npm start",
+    "build-client": "cd client && npm install && npm run build",
+    "start": "npm run build-client && npm run start-server"
+  }
 }
