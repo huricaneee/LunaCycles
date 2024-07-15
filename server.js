@@ -12,6 +12,7 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const User = require("./models/User");
 const Period = require('./models/Period');
+const Mood = require('./models/Mood');
 const mongoose = require("mongoose");
 const cors = require("cors")
 
@@ -109,6 +110,29 @@ app.get("/logout", (req, res) => {
         }
         res.redirect("/login");
     });
+});
+
+app.post('/mood', (req, res) => {
+    const {user, Date, emoji} = req.body;
+
+    const mood = new Mood({
+        user,
+        Date,
+        emoji,
+    });
+
+    mood.save()
+        .then(savedMood => res.status(200).json(savedMood))  // Return the saved mood to the client
+        .catch(err => res.status(500).json({message: `Error storing mood data: ${err.message}`}));
+});
+
+app.get('/mood/:id', (req, res) => {
+    const userId = req.params.id;
+
+    Mood.find({user: userId})
+        .then(moods => res.status(200).json(moods))
+        .catch(err => res.status(500).json({message: `Error retrieving mood data: ${err.message}`}));
+
 });
 
 function checkAuthenticated(req, res, next) {
