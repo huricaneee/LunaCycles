@@ -12,7 +12,7 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const User = require("./models/User");
 const Period = require('./models/Period');
-const Mood = require('./models/Mood');
+const Mood = require('./models/mood');
 const mongoose = require("mongoose");
 const cors = require("cors")
 
