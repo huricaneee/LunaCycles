@@ -1,19 +1,18 @@
 import * as React from 'react';
 import {useContext, useState} from 'react';
-import {DemoContainer} from '@mui/x-date-pickers/internals/demo';
-import {LocalizationProvider} from '@mui/x-date-pickers';
-import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
-import {DateCalendar} from '@mui/x-date-pickers/DateCalendar';
 import {UserContext} from './App.js';
-import {PeriodContext} from './PeriodContext';
+import {PeriodContext} from './PeriodContext.js';
+import {Calendar} from 'react-calendar';
 
-export default function Calendar() {
+
+function MyCalendar({mode}) {
     const {user, isLoading} = useContext(UserContext);
     const {setPeriods} = useContext(PeriodContext);
     const [dates, setDates] = useState({startDate: null, endDate: null, nextDate: "start"});
     const [message, setMessage] = useState(null);
+    const [date, setDate] = useState(new Date());
 
-    const handleDateChange = async (date) => {
+    const handleDateChangePeriod = async (date) => {
         if (dates.nextDate === "start") {
             setDates({startDate: date, endDate: null, nextDate: "end"});
             setMessage('Please choose the end date.');
@@ -40,19 +39,28 @@ export default function Calendar() {
         }
     };
 
+    const handleDateChangeMood = (date) => {
+        
+    }
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DateCalendar']}>
-                <DateCalendar
-                    date={dates.startDate}
-                    onChange={handleDateChange}
-                />
-                {message && <div>{message}</div>}
-            </DemoContainer>
-        </LocalizationProvider>
-    );
+    if (!mode) {
+        return (
+            <div>
+                <Calendar onChange={handleDateChangePeriod} value={date}/>
+                {message}
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <Calendar onChange={handleDateChangeMood} value={date}/>
+            </div>
+        );
+    }
 }
+
+export default MyCalendar;

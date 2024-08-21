@@ -1,6 +1,5 @@
 import "./LandingPage.css";
-import React, { useState } from "react";
-import Calendar from "./Calendar.js";
+import MyCalendar from "./MyCalendar.js";
 import PeriodTable from "./PeriodTable.js";
 import SportsTips from "./SportsTips";
 
@@ -9,7 +8,7 @@ function LandingPage({mode}) {
         return (
             <div className="contentContainer"> {/* Flex container */}
                 <div className="calendarContainer">
-                    <Calendar/>
+                    <MyCalendar mode={mode}/>
                 </div>
                 <div className="tableContainer">
                     <PeriodTable/>
@@ -20,7 +19,13 @@ function LandingPage({mode}) {
             </div>
         );
     } else {
-        return null ;
+        return (
+            <div className="contentContainer">
+                <div className="calendarContainer">
+                    <MyCalendar mode={mode}/>
+                </div>
+            </div>  
+        );
     }
 }
 
