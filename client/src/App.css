@@ -24,10 +24,16 @@
     color: white;
 }
 
-.logout {
+.button-container {
+    display: flex;
+    justify-content: center;
     position: absolute;
     top: 10px;
     right: 10px;
+    gap: 10px;
+}
+
+.button {
     color: white;
     background-color: #D5ABAE;
     border: 2px solid white;
@@ -41,7 +47,7 @@
     transition-duration: 0.4s;
 }
 
-.logout:hover {
+.button:hover {
     color: #D5ABAE;
     background-color: white;
 }
