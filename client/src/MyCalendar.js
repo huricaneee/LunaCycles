@@ -3,6 +3,7 @@ import {useContext, useState} from 'react';
 import {UserContext} from './App.js';
 import {PeriodContext} from './PeriodContext.js';
 import {Calendar} from 'react-calendar';
+import PopUpWindow from './PopUpWindow.js';
 
 
 function MyCalendar({mode}) {
@@ -11,6 +12,7 @@ function MyCalendar({mode}) {
     const [dates, setDates] = useState({startDate: null, endDate: null, nextDate: "start"});
     const [message, setMessage] = useState(null);
     const [date, setDate] = useState(new Date());
+    const [isPopUp, setPopUp] = useState(0);
 
     const handleDateChangePeriod = async (date) => {
         if (dates.nextDate === "start") {
@@ -39,25 +41,45 @@ function MyCalendar({mode}) {
         }
     };
 
+    
+    //render a small window for emoji selections
     const handleDateChangeMood = (date) => {
-        
+        setPopUp(1);
+        return <PopUpWindow/>;
+    }
+
+    //this should be saved at MongoDB
+    const savedDates = {
+        '2024-08-24': '🎉',
+        '2024-08-25': '📝'};
+
+    const isToday = (date) => {
+        const today = new Date();
+        return (date.toISOString().split('T')[0] === today.toISOString().split('T')[0]);
+    }
+
+    const renderEmoji = ({date, view}) => {
+        const dateString = date.toISOString().split('T')[0];
+        return <div>{savedDates[dateString]}</div>;
     }
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    if (!mode) {
+    if (!mode) { //period
         return (
             <div>
                 <Calendar onChange={handleDateChangePeriod} value={date}/>
                 {message}
             </div>
         );
-    } else {
+    } else {   //mood
         return (
             <div>
-                <Calendar onChange={handleDateChangeMood} value={date}/>
+                {isPopUp &&
+                    <PopUpWindow isPopUp={isPopUp} setPopUp={setPopUp}/>}
+                <Calendar onChange={handleDateChangeMood} value={date} tileContent={renderEmoji}/>
             </div>
         );
     }
