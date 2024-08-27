@@ -5,15 +5,16 @@
     align-items: stretch;
     margin-top: 45px;
     padding: 50px 0; /* Adds space top and bottom */
+    flex-direction: row;
+    /* background-color: black; */
 }
 
 .calendarContainer, .sportsTipsContainer, .tableContainer {
     width: 28%;
-    height: 350px;
+    height: max-content;
     margin: 10px 15px; /* Adjusted margins here */
     border-radius: 15px;
     display: flex;
-    flex-direction: column;
     justify-content: flex-start; /* Aligned content to start */
     align-items: center;
     overflow-y: auto; /* Overflow moved here */
