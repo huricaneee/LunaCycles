@@ -15,6 +15,7 @@ const Period = require('./models/Period');
 const Mood = require('./models/mood');
 const mongoose = require("mongoose");
 const cors = require("cors")
+const path = require('path');
 
 initializePassport(passport, async (email) => {
     return User.findOne({email: email});
@@ -42,11 +43,16 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
-app.use(express.static("public"));
+//app.use(express.static("public"));
 
-app.get('/', checkAuthenticated, function (req, res) {
-    res.json({user: req.user});
-});
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// app.get('/', checkAuthenticated, function (req, res) {
+//     res.json({user: req.user});
+// });
+
+
+
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
     res.render("login.ejs");
@@ -60,7 +66,7 @@ app.post(
     "/login",
     checkNotAuthenticated,
     passport.authenticate("local", {
-        successRedirect: "http://localhost:3000", // URL of the React application
+        successRedirect: "/", // URL of the React application
         failureRedirect: "/login",
         failureFlash: true,
     })
@@ -79,6 +85,10 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
     } catch {
         res.redirect("/register");
     }
+});
+
+app.get('/api/user', checkAuthenticated, function (req, res) {
+    res.json({ user: req.user });
 });
 
 app.post('/period', (req, res) => {
@@ -135,6 +145,10 @@ app.get('/mood/:id', (req, res) => {
 
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -149,6 +163,8 @@ function checkNotAuthenticated(req, res, next) {
     }
     next();
 }
+
+
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
